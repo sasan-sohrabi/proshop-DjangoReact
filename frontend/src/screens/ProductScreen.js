@@ -33,7 +33,7 @@ function ProductScreen({match}) {
                     </Card>
                 </Col>
                 <Col md={3}>
-                    <Card >
+                    <Card>
                         <ListGroup variant='flush'>
                             <ListGroup.Item>
                                 <Row>
@@ -52,7 +52,8 @@ function ProductScreen({match}) {
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
-                                <Button className='btn-block' disabled={product.countInStock === 0} type='button'>Add to Cart</Button>
+                                <Button className='btn-block' disabled={product.countInStock === 0} type='button'>Add to
+                                    Cart</Button>
                             </ListGroup.Item>
                         </ListGroup>
                     </Card>
