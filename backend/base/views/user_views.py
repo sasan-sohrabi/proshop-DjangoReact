@@ -1,13 +1,10 @@
 from django.shortcuts import render
-from django.http import JsonResponse
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 
 from django.contrib.auth.models import User
-from .models import Product
-from .products import products
-from .serializers import ProductSerializers, UserSerializers, UserSerializersWithToken
+from base.serializers import UserSerializers, UserSerializersWithToken
 
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
@@ -65,18 +62,4 @@ def get_user_profile(request):
 def get_users(request):
     users = User.objects.all()
     serializers = UserSerializers(users, many=True)
-    return Response(serializers.data)
-
-
-@api_view(['GET'])
-def get_products(request):
-    product = Product.objects.all()
-    serializers = ProductSerializers(product, many=True)
-    return Response(serializers.data)
-
-
-@api_view(['GET'])
-def get_single_products(request, pk):
-    product = Product.objects.get(_id=pk)
-    serializers = ProductSerializers(product, many=False)
     return Response(serializers.data)
